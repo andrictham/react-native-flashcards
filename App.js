@@ -1,23 +1,58 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import styled from 'styled-components/native'
+import { View } from 'react-native'
+import { TabNavigator } from 'react-navigation'
+import CustomStatusBar from './components/CustomStatusBar'
+import DeckList from './views/DeckList'
+import AddDeck from './views/AddDeck'
+
+const Tabs = TabNavigator(
+	{
+		Decks: {
+			screen: DeckList,
+			navigationOptions: {
+				tabBarLabel: 'Decks',
+			},
+		},
+		AddDeck: {
+			screen: AddDeck,
+			navigationOptions: {
+				tabBarLabel: 'Add Deck',
+			},
+		},
+	},
+	{
+		navigationOptions: {
+			header: null,
+		},
+		tabBarOptions: {
+			activeTintColor: '#fff',
+			style: {
+				height: 56,
+				backgroundColor: '#000',
+				shadowColor: 'rgba(0,0,0,0.24)',
+				shadowOffset: {
+					width: 0,
+					height: 3,
+				},
+				shadowRadius: 6,
+				shadowOpacity: 1,
+			},
+		},
+	},
+)
 
 export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
-  }
+	render() {
+		return (
+			<AppContainer>
+				<CustomStatusBar backgroundColor="#000000" barStyle="light-content" />
+				<Tabs />
+			</AppContainer>
+		)
+	}
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const AppContainer = styled(View)`
+	flex: 1;
+`
