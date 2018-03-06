@@ -5,19 +5,40 @@ import { TabNavigator } from 'react-navigation'
 import CustomStatusBar from './components/CustomStatusBar'
 import DeckList from './views/DeckList'
 import AddDeck from './views/AddDeck'
+import AddFlashcard from './views/AddFlashcard'
+import QuizView from './views/QuizView'
+import DeckDetail from './views/DeckDetail'
 
 const Tabs = TabNavigator(
 	{
-		Decks: {
+		DeckList: {
 			screen: DeckList,
 			navigationOptions: {
-				tabBarLabel: 'Decks',
+				tabBarLabel: 'All Decks',
+			},
+		},
+		DeckDetail: {
+			screen: DeckDetail,
+			navigationOptions: {
+				tabBarLabel: 'Deck',
 			},
 		},
 		AddDeck: {
 			screen: AddDeck,
 			navigationOptions: {
 				tabBarLabel: 'Add Deck',
+			},
+		},
+		AddFlashcard: {
+			screen: AddFlashcard,
+			navigationOptions: {
+				tabBarLabel: 'Add Card',
+			},
+		},
+		QuizView: {
+			screen: QuizView,
+			navigationOptions: {
+				tabBarLabel: 'Quiz',
 			},
 		},
 	},
