@@ -8,18 +8,18 @@ export const TEXT_SIZE = {
 	M: '28px',
 	S: '24px',
 	XS: '16px',
-	XXS: '14px',
+	XXS: '12px',
 }
 
 export const Header = styled(Text)`
-	color: ${props => (props.primary ? COLORS.primary : COLORS.subtle)};
+	color: ${props => (props.accent ? COLORS.accent : COLORS.subtle)};
 	font-size: ${props =>
-		(props.size === 'XL' && '36px') ||
-		(props.size === 'L' && '32px') ||
-		(props.size === 'M' && '28px') ||
-		(props.size === 'S' && '24px') ||
-		(props.size === 'XS' && '16px') ||
-		(props.size === 'XXS' && '14px')};
+		(props.size === 'XL' && TEXT_SIZE.XL) ||
+		(props.size === 'L' && TEXT_SIZE.L) ||
+		(props.size === 'M' && TEXT_SIZE.M) ||
+		(props.size === 'S' && TEXT_SIZE.S) ||
+		(props.size === 'XS' && TEXT_SIZE.XS) ||
+		(props.size === 'XXS' && TEXT_SIZE.XXS)};
 	font-weight: ${props =>
 		(props.size === 'XL' && 400) ||
 		(props.size === 'L' && 700) ||

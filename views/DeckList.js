@@ -1,6 +1,16 @@
 import React, { Component } from 'react'
-import { View, Text, FlatList, TouchableNativeFeedback } from 'react-native'
+import {
+	View,
+	Text,
+	FlatList,
+	TouchableNativeFeedback,
+	Platform,
+} from 'react-native'
+import FAB from 'react-native-fab'
+import { Ionicons } from '@expo/vector-icons'
 import styled from 'styled-components/native'
+import { Header } from '../components/Typography'
+import COLORS from '../styles/colors'
 
 // TODO: display title of each deck
 // TODO: display number of cards in each deck
@@ -22,27 +32,27 @@ const data = [
 		numberOfQuestions: 7,
 	},
 	{
-		key: '38s4623ekwfjh',
+		key: '38dd623ekwfjh',
 		title: 'Styled Components',
 		numberOfQuestions: 1,
 	},
 	{
-		key: '38s4623ekwfjh',
+		key: '38s4ffekwfjh',
 		title: 'Flexbox',
 		numberOfQuestions: 0,
 	},
 	{
-		key: '38s4623ekwfjh',
+		key: '3awsd623ekwfjh',
 		title: 'Swift',
 		numberOfQuestions: 12,
 	},
 	{
-		key: '38s4623ekwfjh',
+		key: '38ergr3ekwfjh',
 		title: 'Objective-C',
 		numberOfQuestions: 32,
 	},
 	{
-		key: '38s4623ekwfjh',
+		key: '38s46ssskwfjh',
 		title: 'Sketch.app',
 		numberOfQuestions: 6,
 	},
@@ -50,58 +60,58 @@ const data = [
 
 class DeckList extends Component {
 	render() {
+		const { navigate } = this.props.navigation
+
 		return (
 			<CardList>
 				<FlatList
 					data={data}
-					renderItem={({ item }) => <DeckItem key={item.key} {...item} />}
-					contentContainerStyle={{ paddingTop: 16, paddingBottom: 16 }}
+					renderItem={({ item }) => (
+						<DeckItem key={item.key} {...item} navigate={navigate} />
+					)}
+					contentContainerStyle={{ paddingTop: 16, paddingBottom: 88 }}
+				/>
+				<FAB
+					buttonColor={COLORS.accent}
+					iconTextColor="#FFFFFF"
+					onClickAction={() => {
+						navigate('AddDeck')
+					}}
+					visible={true}
+					iconTextComponent={<Ionicons name="md-add" />}
 				/>
 			</CardList>
 		)
 	}
 }
 
-const DeckItem = ({ title, numberOfQuestions }) => (
-	<TouchableNativeFeedback>
+const DeckItem = ({ title, numberOfQuestions, navigate }) => {
+	const renderCard = (
 		<Card>
-			<Header size="M" primary>
+			<Header size="M" center>
 				{title}
 			</Header>
-			<Header size="XS">{`${numberOfQuestions} Questions`}</Header>
+			<Header size="XS" center>{`${numberOfQuestions} Questions`}</Header>
 		</Card>
-	</TouchableNativeFeedback>
-)
+	)
+	return (
+		<TouchableNativeFeedback onPress={() => navigate('DeckDetail')}>
+			{renderCard}
+		</TouchableNativeFeedback>
+	)
+}
 
 const Card = styled(View)`
 	align-items: center;
 	margin: 8px 16px;
 	padding: 32px;
-	background-color: white;
+	background-color: ${COLORS.inverse};
 	border-radius: 3px;
 	elevation: 2;
 `
 
-const Header = styled(Text)`
-	color: ${props => (props.primary ? 'salmon' : 'grey')};
-	font-size: ${props =>
-		(props.size === 'XL' && '36px') ||
-		(props.size === 'L' && '32px') ||
-		(props.size === 'M' && '28px') ||
-		(props.size === 'S' && '24px') ||
-		(props.size === 'XS' && '16px')};
-	font-weight: ${props =>
-		(props.size === 'XL' && 400) ||
-		(props.size === 'L' && 700) ||
-		(props.size === 'M' && 900) ||
-		(props.size === 'S' && 400) ||
-		(props.size === 'XS' && 400)};
-	text-align: center;
-	margin: 2% 0;
-`
-
 const CardList = styled(View)`
-	background-color: #f5f3f3;
+	background-color: ${COLORS.background};
 `
 
 export default DeckList
