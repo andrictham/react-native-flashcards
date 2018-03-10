@@ -11,7 +11,7 @@ import COLORS from '../styles/colors'
 // TODO: option to add new question to this deck
 
 class DeckDetail extends Component {
-	static navigationOptions = ({ navigation }) => {
+	static navigationOptions = () => {
 		return {
 			title: 'Deck',
 		}
