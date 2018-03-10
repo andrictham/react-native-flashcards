@@ -5,10 +5,8 @@ import { PrimaryButton, SecondaryButton } from '../components/Buttons'
 import DeckInfo from '../components/DeckInfo'
 import COLORS from '../styles/colors'
 
-// TODO: display title of the deck
-// TODO: display number of cards in deck
-// TODO: display an option to start a quiz on this deck
-// TODO: option to add new question to this deck
+// TODO: Link up buttons
+// TODO: Connect to Redux
 
 class DeckDetail extends Component {
 	static navigationOptions = () => {

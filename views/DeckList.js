@@ -6,8 +6,7 @@ import styled from 'styled-components/native'
 import COLORS from '../styles/colors'
 import DeckInfo from '../components/DeckInfo'
 
-// TODO: display title of each deck
-// TODO: display number of cards in each deck
+// TODO: Connect to Redux
 
 const data = [
 	{

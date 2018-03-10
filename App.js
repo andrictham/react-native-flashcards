@@ -11,6 +11,10 @@ import DeckDetail from './views/DeckDetail'
 import ProfileView from './views/ProfileView'
 import COLORS from './styles/colors'
 
+// TODO: Store everything in Redux
+// TODO: Persist Redux store to AsyncStorage
+// TODO: Add daily push notification reminder
+
 const Tabs = TabNavigator(
 	{
 		DeckList: {

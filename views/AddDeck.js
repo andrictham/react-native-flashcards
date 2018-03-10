@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 import { Header } from '../components/Typography'
 import COLORS from '../styles/colors'
 
-// TODO: option to enter in title for the new deck
 // TODO: option to submit the new deck title
 
 class AddDeck extends Component {
