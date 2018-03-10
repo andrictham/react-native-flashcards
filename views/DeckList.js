@@ -3,8 +3,8 @@ import { View, FlatList, TouchableNativeFeedback } from 'react-native'
 import FAB from 'react-native-fab'
 import { Ionicons } from '@expo/vector-icons'
 import styled from 'styled-components/native'
-import { Header } from '../components/Typography'
 import COLORS from '../styles/colors'
+import DeckInfo from '../components/DeckInfo'
 
 // TODO: display title of each deck
 // TODO: display number of cards in each deck
@@ -82,10 +82,7 @@ class DeckList extends Component {
 const DeckItem = ({ title, cardCount, navigate }) => {
 	const renderCard = (
 		<Card>
-			<Header size="M" center>
-				{title}
-			</Header>
-			<Header size="XS" center>{`${cardCount} Questions`}</Header>
+			<DeckInfo title={title} cardCount={cardCount} />
 		</Card>
 	)
 	return (

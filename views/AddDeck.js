@@ -51,8 +51,9 @@ const DeckTitleInput = styled(TextInput)`
 `
 
 const AddDeckForm = styled(View)`
-	padding: 16px;
-	margin-top: 8px;
+	flex: 1;
+	padding: 32px 16px;
+	background-color: ${COLORS.inverse};
 `
 
 export default AddDeck
