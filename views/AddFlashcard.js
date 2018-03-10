@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { ScrollView, Button } from 'react-native'
+import styled from 'styled-components/native'
+import COLORS from '../styles/colors'
+import { TextInputGroup } from '../components/Inputs'
 
-// TODO: option to enter in the question
-// TODO: option enter in the answer
-// TODO: option to submit the new card
+// TODO: Link up button
+// TODO: Connect to Redux
 
 class AddFlashcard extends Component {
 	static navigationOptions = () => {
@@ -11,13 +13,46 @@ class AddFlashcard extends Component {
 			title: 'Add Flashcard',
 		}
 	}
+	state = {
+		question: '',
+		answer: '',
+	}
 	render() {
 		return (
-			<View>
-				<Text>Add Flashcard View</Text>
-			</View>
+			<AddFlashcardForm>
+				<TextInputGroup
+					title="Question"
+					placeholder="What’s the answer to life and the universe?"
+					value={this.state.question}
+					onChangeText={question => this.setState({ question })}
+					multiline
+				/>
+				<TextInputGroup
+					title="Answer"
+					placeholder="42"
+					value={this.state.answer}
+					onChangeText={answer => this.setState({ answer })}
+					multiline
+				/>
+				<Button
+					title="Add Card"
+					onPress={() =>
+						alert(`Question: ${this.state.question}\nAnswer: ${
+							this.state.answer
+						}
+						`)
+					}
+					color={COLORS.accent}
+				/>
+			</AddFlashcardForm>
 		)
 	}
 }
+
+const AddFlashcardForm = styled(ScrollView)`
+	flex: 1;
+	padding: 32px 16px;
+	background-color: ${COLORS.inverse};
+`
 
 export default AddFlashcard
