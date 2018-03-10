@@ -6,6 +6,11 @@ import { View, Text } from 'react-native'
 // TODO: option to submit the new card
 
 class AddFlashcard extends Component {
+	static navigationOptions = () => {
+		return {
+			title: 'Add Flashcard',
+		}
+	}
 	render() {
 		return (
 			<View>

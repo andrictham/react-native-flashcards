@@ -23,18 +23,6 @@ const Tabs = TabNavigator(
 				tabBarLabel: 'All Decks',
 			},
 		},
-		AddFlashcard: {
-			screen: AddFlashcard,
-			navigationOptions: {
-				tabBarLabel: 'Add Card',
-			},
-		},
-		QuizView: {
-			screen: QuizView,
-			navigationOptions: {
-				tabBarLabel: 'Quiz',
-			},
-		},
 		ProfileView: {
 			screen: ProfileView,
 			navigationOptions: {
@@ -86,6 +74,18 @@ const Stacks = StackNavigator({
 	},
 	DeckDetail: {
 		screen: DeckDetail,
+		navigationOptions: {
+			...StackNavigationOptions,
+		},
+	},
+	AddFlashcard: {
+		screen: AddFlashcard,
+		navigationOptions: {
+			...StackNavigationOptions,
+		},
+	},
+	QuizView: {
+		screen: QuizView,
 		navigationOptions: {
 			...StackNavigationOptions,
 		},

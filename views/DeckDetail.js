@@ -16,6 +16,7 @@ class DeckDetail extends Component {
 	}
 	render() {
 		const { title, cardCount } = this.props.navigation.state.params
+		const { navigate } = this.props.navigation
 		return (
 			<ViewContainer>
 				<Deck>
@@ -24,13 +25,13 @@ class DeckDetail extends Component {
 						<PrimaryButton
 							title="Start Quiz"
 							onPress={() => {
-								alert('pressed!')
+								navigate('QuizView', { cardCount })
 							}}
 						/>
 						<SecondaryButton
-							title="Add Question"
+							title="Add Flashcard"
 							onPress={() => {
-								alert('pressed!')
+								navigate('AddFlashcard')
 							}}
 						/>
 					</Actions>

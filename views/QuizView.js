@@ -9,6 +9,11 @@ import { View, Text } from 'react-native'
 // TODO: display percentage correct once the quiz is complete
 
 class QuizView extends Component {
+	static navigationOptions = () => {
+		return {
+			title: 'Quiz',
+		}
+	}
 	render() {
 		return (
 			<View>
