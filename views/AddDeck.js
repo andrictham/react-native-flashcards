@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, TextInput, Button } from 'react-native'
+import { ScrollView, Button, Platform } from 'react-native'
 import styled from 'styled-components/native'
 import COLORS from '../styles/colors'
 import { TextInputGroup } from '../components/Inputs'
@@ -17,12 +17,15 @@ class AddDeck extends Component {
 	}
 	render() {
 		return (
-			<AddDeckForm>
+			<AddDeckForm
+				keyboardShouldPersistTaps="handled"
+				keyboardDismissMode="on-drag"
+			>
 				<TextInputGroup
 					title="What are you learning?"
 					placeholder="Topic"
 					large
-					autoFocus
+					autoFocus={Platform.OS === 'android' ? true : false}
 					value={this.state.title}
 					onChangeText={title => this.setState({ title })}
 				/>
@@ -36,7 +39,7 @@ class AddDeck extends Component {
 	}
 }
 
-const AddDeckForm = styled(View)`
+const AddDeckForm = styled(ScrollView)`
 	flex: 1;
 	padding: 32px 16px;
 	background-color: ${COLORS.inverse};

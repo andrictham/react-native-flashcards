@@ -16,26 +16,64 @@ import { Ionicons } from '@expo/vector-icons'
 // TODO: Persist Redux store to AsyncStorage
 // TODO: Add daily push notification reminder
 
+const TabContents = () => {
+	if (Platform.OS === 'ios') {
+		return {
+			DeckList: {
+				screen: DeckList,
+				navigationOptions: {
+					tabBarLabel: 'All Decks',
+					tabBarIcon: ({ tintColor }) => (
+						<Ionicons name="ios-albums" size={30} color={tintColor} />
+					),
+				},
+			},
+			AddDeck: {
+				screen: AddDeck,
+				navigationOptions: {
+					tabBarLabel: 'Add Deck',
+					tabBarIcon: ({ tintColor }) => (
+						<Ionicons name="ios-add-circle" size={30} color={tintColor} />
+					),
+				},
+			},
+			ProfileView: {
+				screen: ProfileView,
+				navigationOptions: {
+					tabBarLabel: 'Profile',
+					tabBarIcon: ({ tintColor }) => (
+						<Ionicons name="ios-person" size={40} color={tintColor} />
+					),
+				},
+			},
+		}
+	} else if (Platform.OS === 'android') {
+		return {
+			DeckList: {
+				screen: DeckList,
+				navigationOptions: {
+					tabBarLabel: 'All Decks',
+					tabBarIcon: ({ tintColor }) => (
+						<Ionicons name="ios-albums" size={30} color={tintColor} />
+					),
+				},
+			},
+			ProfileView: {
+				screen: ProfileView,
+				navigationOptions: {
+					tabBarLabel: 'Profile',
+					tabBarIcon: ({ tintColor }) => (
+						<Ionicons name="ios-person" size={40} color={tintColor} />
+					),
+				},
+			},
+		}
+	}
+}
+
 const Tabs = TabNavigator(
 	{
-		DeckList: {
-			screen: DeckList,
-			navigationOptions: {
-				tabBarLabel: 'All Decks',
-				tabBarIcon: ({ tintColor }) => (
-					<Ionicons name="ios-albums" size={30} color={tintColor} />
-				),
-			},
-		},
-		ProfileView: {
-			screen: ProfileView,
-			navigationOptions: {
-				tabBarLabel: 'Profile',
-				tabBarIcon: ({ tintColor }) => (
-					<Ionicons name="ios-person" size={40} color={tintColor} />
-				),
-			},
-		},
+		...TabContents(),
 	},
 	{
 		navigationOptions: {

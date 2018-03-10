@@ -68,17 +68,26 @@ class DeckList extends Component {
 					renderItem={({ item }) => (
 						<DeckItem key={item.key} {...item} navigate={navigate} />
 					)}
-					contentContainerStyle={{ paddingTop: 16, paddingBottom: 88 }}
-				/>
-				<FAB
-					buttonColor={COLORS.accent}
-					iconTextColor="#FFFFFF"
-					onClickAction={() => {
-						navigate('AddDeck')
+					contentContainerStyle={{
+						paddingTop: 16,
+						paddingBottom: Platform.OS === 'android' ? 88 : 16,
 					}}
-					visible={true}
-					iconTextComponent={<Ionicons name="md-add" />}
 				/>
+				{Platform.OS === 'android' && (
+					<FAB
+						buttonColor={
+							Platform.OS === 'android' ? COLORS.accent : COLORS.inverse
+						}
+						iconTextColor={
+							Platform.OS === 'android' ? COLORS.inverse : COLORS.accent
+						}
+						onClickAction={() => {
+							navigate('AddDeck')
+						}}
+						visible={true}
+						iconTextComponent={<Ionicons name="md-add" />}
+					/>
+				)}
 			</CardList>
 		)
 	}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, Button } from 'react-native'
+import { ScrollView, Button, Platform } from 'react-native'
 import styled from 'styled-components/native'
 import COLORS from '../styles/colors'
 import { TextInputGroup } from '../components/Inputs'
@@ -19,13 +19,17 @@ class AddFlashcard extends Component {
 	}
 	render() {
 		return (
-			<AddFlashcardForm>
+			<AddFlashcardForm
+				keyboardShouldPersistTaps="handled"
+				keyboardDismissMode="on-drag"
+			>
 				<TextInputGroup
 					title="Question"
 					placeholder="What’s the answer to life and the universe?"
 					value={this.state.question}
 					onChangeText={question => this.setState({ question })}
 					multiline
+					autoFocus={Platform.OS === 'ios' ? true : false}
 				/>
 				<TextInputGroup
 					title="Answer"
