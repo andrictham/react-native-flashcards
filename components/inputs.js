@@ -33,7 +33,7 @@ export const TextInputGroup = ({
 const StyledTextInput = styled(TextInput)`
 	margin: 8px 0;
 	padding-bottom: 16px;
-	margin-top: 8px;
+	margin-bottom: 16px;
 	padding-left: 5px;
 	font-size: ${props => (props.large ? '24px' : '14px')};
 	font-weight: 900;

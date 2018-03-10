@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
-import { View, FlatList, TouchableNativeFeedback } from 'react-native'
+import {
+	View,
+	FlatList,
+	TouchableNativeFeedback,
+	TouchableOpacity,
+	Platform,
+} from 'react-native'
 import FAB from 'react-native-fab'
 import { Ionicons } from '@expo/vector-icons'
 import styled from 'styled-components/native'
@@ -84,13 +90,23 @@ const DeckItem = ({ title, cardCount, navigate }) => {
 			<DeckInfo title={title} cardCount={cardCount} />
 		</Card>
 	)
-	return (
-		<TouchableNativeFeedback
-			onPress={() => navigate('DeckDetail', { title, cardCount })}
-		>
-			{renderCard}
-		</TouchableNativeFeedback>
-	)
+	if (Platform.OS === 'ios') {
+		return (
+			<TouchableOpacity
+				onPress={() => navigate('DeckDetail', { title, cardCount })}
+			>
+				{renderCard}
+			</TouchableOpacity>
+		)
+	} else if (Platform.OS === 'android') {
+		return (
+			<TouchableNativeFeedback
+				onPress={() => navigate('DeckDetail', { title, cardCount })}
+			>
+				{renderCard}
+			</TouchableNativeFeedback>
+		)
+	}
 }
 
 const Card = styled(View)`

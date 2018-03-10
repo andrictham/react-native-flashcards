@@ -12,7 +12,7 @@ export const TEXT_SIZE = {
 }
 
 export const Header = styled(Text)`
-	color: ${props => (props.accent ? COLORS.accent : COLORS.subtle)};
+	color: ${props => (props.accent ? COLORS.accent : COLORS.primary)};
 	font-size: ${props =>
 		(props.size === 'XL' && TEXT_SIZE.XL) ||
 		(props.size === 'L' && TEXT_SIZE.L) ||

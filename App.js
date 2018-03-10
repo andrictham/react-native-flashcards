@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { View } from 'react-native'
+import { View, Platform } from 'react-native'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import CustomStatusBar from './components/CustomStatusBar'
 import DeckList from './views/DeckList'
@@ -10,6 +10,7 @@ import QuizView from './views/QuizView'
 import DeckDetail from './views/DeckDetail'
 import ProfileView from './views/ProfileView'
 import COLORS from './styles/colors'
+import { Ionicons } from '@expo/vector-icons'
 
 // TODO: Store everything in Redux
 // TODO: Persist Redux store to AsyncStorage
@@ -21,12 +22,18 @@ const Tabs = TabNavigator(
 			screen: DeckList,
 			navigationOptions: {
 				tabBarLabel: 'All Decks',
+				tabBarIcon: ({ tintColor }) => (
+					<Ionicons name="ios-albums" size={30} color={tintColor} />
+				),
 			},
 		},
 		ProfileView: {
 			screen: ProfileView,
 			navigationOptions: {
 				tabBarLabel: 'Profile',
+				tabBarIcon: ({ tintColor }) => (
+					<Ionicons name="ios-person" size={40} color={tintColor} />
+				),
 			},
 		},
 	},
@@ -35,14 +42,17 @@ const Tabs = TabNavigator(
 			header: null,
 		},
 		tabBarOptions: {
-			activeTintColor: COLORS.inverse,
-			inactiveTintColor: COLORS.inverse,
+			activeTintColor:
+				Platform.OS === 'android' ? COLORS.inverse : COLORS.accent,
+			inactiveTintColor:
+				Platform.OS === 'android' ? COLORS.inverse : COLORS.subtle,
 			indicatorStyle: {
 				backgroundColor: COLORS.inverse,
 			},
 			style: {
 				height: 56,
-				backgroundColor: COLORS.accent,
+				backgroundColor:
+					Platform.OS === 'android' ? COLORS.accent : COLORS.inverse,
 				shadowColor: 'rgba(0,0,0,0.24)',
 				shadowOffset: {
 					width: 0,
@@ -100,7 +110,7 @@ export default class App extends React.Component {
 					backgroundColor={COLORS.accent}
 					barStyle="light-content"
 				/>
-				<Stacks />
+				<Stacks style={{ flex: 1 }} />
 			</AppContainer>
 		)
 	}
