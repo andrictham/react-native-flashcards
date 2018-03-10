@@ -10,7 +10,7 @@ const DeckInfo = ({ title, cardCount }) => {
 				{title}
 			</Header>
 			<Header size="XS" center>
-				{pluralize('Questions', cardCount, true)}
+				{pluralize('Flashcard', cardCount, true)}
 			</Header>
 		</View>
 	)
