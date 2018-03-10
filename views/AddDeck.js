@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { View, TextInput, Button } from 'react-native'
 import styled from 'styled-components/native'
-import { Header } from '../components/Typography'
 import COLORS from '../styles/colors'
+import { TextInputGroup } from '../components/Inputs'
 
 // TODO: option to submit the new deck title
 
@@ -18,16 +18,13 @@ class AddDeck extends Component {
 	render() {
 		return (
 			<AddDeckForm>
-				<Header size="XXS" style={{ paddingLeft: 3 }}>
-					WHAT ARE YOU LEARNING?
-				</Header>
-				<DeckTitleInput
+				<TextInputGroup
+					title="What are you learning?"
 					placeholder="Topic"
+					large
 					autoFocus
 					value={this.state.title}
 					onChangeText={title => this.setState({ title })}
-					underlineColorAndroid={COLORS.accent}
-					selectionColor={COLORS.accent}
 				/>
 				<Button
 					title="Add Deck"
@@ -38,16 +35,6 @@ class AddDeck extends Component {
 		)
 	}
 }
-
-const DeckTitleInput = styled(TextInput)`
-	margin: 8px 0;
-	padding-bottom: 16px;
-	margin-top: 8px;
-	padding-left: 5px;
-	font-size: 24px;
-	font-weight: 900;
-	color: ${COLORS.primary};
-`
 
 const AddDeckForm = styled(View)`
 	flex: 1;
