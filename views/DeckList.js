@@ -1,11 +1,5 @@
 import React, { Component } from 'react'
-import {
-	View,
-	Text,
-	FlatList,
-	TouchableNativeFeedback,
-	Platform,
-} from 'react-native'
+import { View, FlatList, TouchableNativeFeedback } from 'react-native'
 import FAB from 'react-native-fab'
 import { Ionicons } from '@expo/vector-icons'
 import styled from 'styled-components/native'
@@ -95,7 +89,9 @@ const DeckItem = ({ title, numberOfQuestions, navigate }) => {
 		</Card>
 	)
 	return (
-		<TouchableNativeFeedback onPress={() => navigate('DeckDetail')}>
+		<TouchableNativeFeedback
+			onPress={() => navigate('DeckDetail', { title, numberOfQuestions })}
+		>
 			{renderCard}
 		</TouchableNativeFeedback>
 	)

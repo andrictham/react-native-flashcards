@@ -8,6 +8,7 @@ import AddDeck from './views/AddDeck'
 import AddFlashcard from './views/AddFlashcard'
 import QuizView from './views/QuizView'
 import DeckDetail from './views/DeckDetail'
+import ProfileView from './views/ProfileView'
 import COLORS from './styles/colors'
 
 const Tabs = TabNavigator(
@@ -28,6 +29,12 @@ const Tabs = TabNavigator(
 			screen: QuizView,
 			navigationOptions: {
 				tabBarLabel: 'Quiz',
+			},
+		},
+		ProfileView: {
+			screen: ProfileView,
+			navigationOptions: {
+				tabBarLabel: 'Profile',
 			},
 		},
 	},

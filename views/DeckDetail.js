@@ -7,10 +7,19 @@ import { View, Text } from 'react-native'
 // TODO: option to add new question to this deck
 
 class DeckDetail extends Component {
+	static navigationOptions = ({ navigation }) => {
+		const { title } = navigation.state.params
+
+		return {
+			title,
+		}
+	}
 	render() {
+		const { title, numberOfQuestions } = this.props.navigation.state.params
 		return (
 			<View>
-				<Text>Individual Deck View</Text>
+				<Text>{title}</Text>
+				<Text>{numberOfQuestions}</Text>
 			</View>
 		)
 	}

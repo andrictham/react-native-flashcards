@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, Button } from 'react-native'
+import { View, TextInput, Button } from 'react-native'
 import styled from 'styled-components/native'
 import { Header } from '../components/Typography'
 import COLORS from '../styles/colors'
