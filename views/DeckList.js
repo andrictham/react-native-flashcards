@@ -13,42 +13,42 @@ const data = [
 	{
 		key: 'aefwHGw8eub',
 		title: 'React Native',
-		numberOfQuestions: 3,
+		cardCount: 3,
 	},
 	{
 		key: 'bfjeiofhEIEW',
 		title: 'Javascript',
-		numberOfQuestions: 57,
+		cardCount: 57,
 	},
 	{
 		key: '38s4623ekwfjh',
 		title: 'Redux',
-		numberOfQuestions: 7,
+		cardCount: 7,
 	},
 	{
 		key: '38dd623ekwfjh',
 		title: 'Styled Components',
-		numberOfQuestions: 1,
+		cardCount: 1,
 	},
 	{
 		key: '38s4ffekwfjh',
 		title: 'Flexbox',
-		numberOfQuestions: 0,
+		cardCount: 0,
 	},
 	{
 		key: '3awsd623ekwfjh',
 		title: 'Swift',
-		numberOfQuestions: 12,
+		cardCount: 12,
 	},
 	{
 		key: '38ergr3ekwfjh',
 		title: 'Objective-C',
-		numberOfQuestions: 32,
+		cardCount: 32,
 	},
 	{
 		key: '38s46ssskwfjh',
 		title: 'Sketch.app',
-		numberOfQuestions: 6,
+		cardCount: 6,
 	},
 ]
 
@@ -79,18 +79,18 @@ class DeckList extends Component {
 	}
 }
 
-const DeckItem = ({ title, numberOfQuestions, navigate }) => {
+const DeckItem = ({ title, cardCount, navigate }) => {
 	const renderCard = (
 		<Card>
 			<Header size="M" center>
 				{title}
 			</Header>
-			<Header size="XS" center>{`${numberOfQuestions} Questions`}</Header>
+			<Header size="XS" center>{`${cardCount} Questions`}</Header>
 		</Card>
 	)
 	return (
 		<TouchableNativeFeedback
-			onPress={() => navigate('DeckDetail', { title, numberOfQuestions })}
+			onPress={() => navigate('DeckDetail', { title, cardCount })}
 		>
 			{renderCard}
 		</TouchableNativeFeedback>

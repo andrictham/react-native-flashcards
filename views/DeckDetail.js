@@ -15,11 +15,11 @@ class DeckDetail extends Component {
 		}
 	}
 	render() {
-		const { title, numberOfQuestions } = this.props.navigation.state.params
+		const { title, cardCount } = this.props.navigation.state.params
 		return (
 			<View>
 				<Text>{title}</Text>
-				<Text>{numberOfQuestions}</Text>
+				<Text>{cardCount}</Text>
 			</View>
 		)
 	}
