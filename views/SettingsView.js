@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Switch, Platform } from 'react-native'
-import { TableView, Section, Cell } from 'react-native-tableview-simple'
+import { Switch, Platform, View } from 'react-native'
+import { Section, Cell } from 'react-native-tableview-simple'
 import COLORS from '../styles/colors'
 
 // TODO: Option to toggle on/off notifications
@@ -11,7 +11,7 @@ class SettingsView extends Component {
 	}
 	render() {
 		return (
-			<TableView>
+			<View style={{ marginTop: 16 }}>
 				<Section
 					header="NOTIFICATIONS"
 					footer="Turn this on to receive a friendly reminder at 9am daily."
@@ -37,7 +37,7 @@ class SettingsView extends Component {
 						contentContainerStyle={{ paddingVertical: 4 }} // Adjust height
 					/>
 				</Section>
-			</TableView>
+			</View>
 		)
 	}
 }
