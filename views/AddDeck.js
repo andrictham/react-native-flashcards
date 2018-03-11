@@ -7,8 +7,6 @@ import COLORS from '../styles/colors'
 import { TextInputGroup } from '../components/Inputs'
 import { PrimaryButton } from '../components/Buttons'
 
-// TODO: option to submit the new deck title
-
 class AddDeck extends Component {
 	static navigationOptions = () => {
 		return {

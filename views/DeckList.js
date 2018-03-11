@@ -13,51 +13,6 @@ import styled from 'styled-components/native'
 import COLORS from '../styles/colors'
 import DeckInfo from '../components/DeckInfo'
 
-// TODO: Connect to Redux
-
-// const data = [
-// 	{
-// 		key: 'aefwHGw8eub',
-// 		title: 'React Native',
-// 		cardCount: 3,
-// 	},
-// 	{
-// 		key: 'bfjeiofhEIEW',
-// 		title: 'Javascript',
-// 		cardCount: 57,
-// 	},
-// 	{
-// 		key: '38s4623ekwfjh',
-// 		title: 'Redux',
-// 		cardCount: 7,
-// 	},
-// 	{
-// 		key: '38dd623ekwfjh',
-// 		title: 'Styled Components',
-// 		cardCount: 1,
-// 	},
-// 	{
-// 		key: '38s4ffekwfjh',
-// 		title: 'Flexbox',
-// 		cardCount: 0,
-// 	},
-// 	{
-// 		key: '3awsd623ekwfjh',
-// 		title: 'Swift',
-// 		cardCount: 12,
-// 	},
-// 	{
-// 		key: '38ergr3ekwfjh',
-// 		title: 'Objective-C',
-// 		cardCount: 32,
-// 	},
-// 	{
-// 		key: '38s46ssskwfjh',
-// 		title: 'Sketch.app',
-// 		cardCount: 6,
-// 	},
-// ]
-
 class DeckList extends Component {
 	keyExtractor = item => item.id
 	render() {
