@@ -6,7 +6,7 @@ import AddDeck from '../views/AddDeck'
 import AddFlashcard from '../views/AddFlashcard'
 import QuizView from '../views/QuizView'
 import DeckDetail from '../views/DeckDetail'
-import ProfileView from '../views/ProfileView'
+import SettingsView from '../views/SettingsView'
 import { Ionicons } from '@expo/vector-icons'
 import COLORS from '../styles/colors'
 
@@ -31,12 +31,12 @@ const TabContents = () => {
 					),
 				},
 			},
-			ProfileView: {
-				screen: ProfileView,
+			SettingsView: {
+				screen: SettingsView,
 				navigationOptions: {
-					tabBarLabel: 'Profile',
+					tabBarLabel: 'Settings',
 					tabBarIcon: ({ tintColor }) => (
-						<Ionicons name="ios-person" size={40} color={tintColor} />
+						<Ionicons name="ios-settings" size={34} color={tintColor} />
 					),
 				},
 			},
@@ -49,10 +49,10 @@ const TabContents = () => {
 					tabBarLabel: 'All Decks',
 				},
 			},
-			ProfileView: {
-				screen: ProfileView,
+			SettingsView: {
+				screen: SettingsView,
 				navigationOptions: {
-					tabBarLabel: 'Profile',
+					tabBarLabel: 'Settings',
 				},
 			},
 		}
