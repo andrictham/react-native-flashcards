@@ -24,7 +24,8 @@ class AddDeck extends Component {
 			>
 				<TextInputGroup
 					title="What are you learning?"
-					placeholder="Topic"
+					placeholder="Flower Arrangement"
+					maxLength={40}
 					large
 					autoFocus
 					value={this.state.title}

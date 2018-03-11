@@ -11,6 +11,7 @@ export const TextInputGroup = ({
 	onChangeText,
 	autoFocus,
 	multiline,
+	maxLength,
 	large,
 }) => (
 	<View>
@@ -23,6 +24,7 @@ export const TextInputGroup = ({
 			value={value}
 			onChangeText={onChangeText}
 			multiline={multiline}
+			maxLength={maxLength}
 			large={large}
 			underlineColorAndroid={COLORS.accent}
 			selectionColor={COLORS.accent}
