@@ -22,11 +22,11 @@ export const Header = styled(Text)`
 		(props.size === 'XXS' && TEXT_SIZE.XXS)};
 	font-weight: ${props =>
 		(props.size === 'XL' && 400) ||
-		(props.size === 'L' && 700) ||
+		(props.size === 'L' && 900) ||
 		(props.size === 'M' && 900) ||
 		(props.size === 'S' && 400) ||
 		(props.size === 'XS' && 400) ||
 		(props.size === 'XXS' && 600)};
 	text-align: ${props => (props.center ? 'center' : 'left')};
-	margin: 1% 0;
+	margin: 1% 0%;
 `

@@ -2,9 +2,21 @@ import React from 'react'
 import { TouchableOpacity, Text } from 'react-native'
 import styled from 'styled-components/native'
 import COLORS from '../styles/colors'
+import { FontAwesome } from '@expo/vector-icons'
 
-export const PrimaryButton = ({ title, onPress }) => (
-	<SolidButton onPress={onPress}>
+export const PrimaryButton = ({ title, onPress, stackedRow, intent }) => (
+	<SolidButton onPress={onPress} stackedRow={stackedRow} intent={intent}>
+		{intent && (
+			<FontAwesome
+				name={
+					(intent === 'correct' && 'check-square') ||
+					(intent === 'wrong' && 'window-close')
+				}
+				size={16}
+				color={COLORS.inverse}
+				style={{ paddingRight: 8 }}
+			/>
+		)}
 		<SolidButtonText>{title.toUpperCase()}</SolidButtonText>
 	</SolidButton>
 )
@@ -16,8 +28,10 @@ export const SecondaryButton = ({ title, onPress }) => (
 )
 
 const SolidButton = styled(TouchableOpacity)`
-	padding: 8px 32px;
-	margin: 8px;
+	flex-direction: row;
+	align-items: center;
+	padding: 16px 32px;
+	margin: ${props => (props.stackedRow ? '8px' : '8px 0px')};
 	border-radius: 3px;
 	background-color: ${COLORS.accent};
 	elevation: 3;
@@ -29,7 +43,7 @@ const SolidButtonText = styled(Text)`
 `
 
 const LinkButton = styled(TouchableOpacity)`
-	padding: 16px;
+	padding: 16px 0px;
 `
 
 const LinkButtonText = styled(Text)`
