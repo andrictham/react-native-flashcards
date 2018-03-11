@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { ScrollView, Platform } from 'react-native'
+import { connect } from 'react-redux'
+import { addDeck } from '../actions'
+import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 import COLORS from '../styles/colors'
 import { TextInputGroup } from '../components/Inputs'
@@ -15,6 +17,10 @@ class AddDeck extends Component {
 	}
 	state = {
 		title: '',
+	}
+	handleAdd = () => {
+		this.props.addDeck(this.state.title)
+		this.props.navigation.navigate('DeckList')
 	}
 	render() {
 		return (
@@ -33,8 +39,9 @@ class AddDeck extends Component {
 				/>
 				<PrimaryButton
 					title="Add Deck"
-					onPress={() => alert(this.state.title)}
+					onPress={this.handleAdd}
 					color={COLORS.accent}
+					disabled={this.state.title === '' ? true : false}
 				/>
 			</AddDeckForm>
 		)
@@ -47,4 +54,4 @@ const AddDeckForm = styled(ScrollView)`
 	background-color: ${COLORS.inverse};
 `
 
-export default AddDeck
+export default connect(null, { addDeck })(AddDeck)

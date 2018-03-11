@@ -46,9 +46,8 @@ const SolidButton = styled(TouchableOpacity)`
 	margin: ${props => (props.stackedRow ? '8px' : '8px 0px')};
 	border-radius: 3px;
 	background-color: ${props =>
-		props.disabled ? COLORS.subtle : COLORS.accent};
-	opacity: ${props => (props.disabled ? 0.4 : 1)};
-	elevation: 3;
+		props.disabled ? COLORS.disabled : COLORS.accent};
+	elevation: ${props => (props.disabled ? 0 : 3)};
 `
 
 const SolidButtonText = styled(Text)`
