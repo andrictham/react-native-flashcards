@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { ScrollView, Button, Platform } from 'react-native'
+import { ScrollView, Platform } from 'react-native'
 import styled from 'styled-components/native'
 import COLORS from '../styles/colors'
 import { TextInputGroup } from '../components/Inputs'
+import { PrimaryButton } from '../components/Buttons'
 
 // TODO: Link up button
 // TODO: Connect to Redux
@@ -38,7 +39,7 @@ class AddFlashcard extends Component {
 					onChangeText={answer => this.setState({ answer })}
 					multiline
 				/>
-				<Button
+				<PrimaryButton
 					title="Add Card"
 					onPress={() =>
 						alert(`Question: ${this.state.question}\nAnswer: ${

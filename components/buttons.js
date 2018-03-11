@@ -30,6 +30,7 @@ export const SecondaryButton = ({ title, onPress }) => (
 const SolidButton = styled(TouchableOpacity)`
 	flex-direction: row;
 	align-items: center;
+	justify-content: center;
 	padding: 16px 32px;
 	margin: ${props => (props.stackedRow ? '8px' : '8px 0px')};
 	border-radius: 3px;

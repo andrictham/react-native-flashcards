@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { ScrollView, Button, Platform } from 'react-native'
+import { ScrollView, Platform } from 'react-native'
 import styled from 'styled-components/native'
 import COLORS from '../styles/colors'
 import { TextInputGroup } from '../components/Inputs'
+import { PrimaryButton } from '../components/Buttons'
 
 // TODO: option to submit the new deck title
 
@@ -25,11 +26,11 @@ class AddDeck extends Component {
 					title="What are you learning?"
 					placeholder="Topic"
 					large
-					autoFocus={Platform.OS === 'android' ? true : false}
+					autoFocus
 					value={this.state.title}
 					onChangeText={title => this.setState({ title })}
 				/>
-				<Button
+				<PrimaryButton
 					title="Add Deck"
 					onPress={() => alert(this.state.title)}
 					color={COLORS.accent}

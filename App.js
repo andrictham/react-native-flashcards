@@ -73,7 +73,7 @@ const TabContents = () => {
 
 const Tabs = TabNavigator(
 	{
-		...TabContents(),
+		...TabContents(), // Render platform-specific tabs
 	},
 	{
 		navigationOptions: {
