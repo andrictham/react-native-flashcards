@@ -4,8 +4,19 @@ import styled from 'styled-components/native'
 import COLORS from '../styles/colors'
 import { FontAwesome } from '@expo/vector-icons'
 
-export const PrimaryButton = ({ title, onPress, stackedRow, intent }) => (
-	<SolidButton onPress={onPress} stackedRow={stackedRow} intent={intent}>
+export const PrimaryButton = ({
+	title,
+	onPress,
+	disabled,
+	stackedRow,
+	intent,
+}) => (
+	<SolidButton
+		onPress={onPress}
+		disabled={disabled}
+		stackedRow={stackedRow}
+		intent={intent}
+	>
 		{intent && (
 			<FontAwesome
 				name={
@@ -34,7 +45,9 @@ const SolidButton = styled(TouchableOpacity)`
 	padding: 16px 32px;
 	margin: ${props => (props.stackedRow ? '8px' : '8px 0px')};
 	border-radius: 3px;
-	background-color: ${COLORS.accent};
+	background-color: ${props =>
+		props.disabled ? COLORS.subtle : COLORS.accent};
+	opacity: ${props => (props.disabled ? 0.4 : 1)};
 	elevation: 3;
 `
 
