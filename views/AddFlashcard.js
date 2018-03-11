@@ -22,8 +22,8 @@ class AddFlashcard extends Component {
 		return (
 			<KeyboardAvoidingView
 				behavior="padding"
-				style={{ flex: 1 }}
-				keyboardVerticalOffset={100}
+				style={{ flex: 1, backgroundColor: COLORS.inverse }}
+				keyboardVerticalOffset={Platform.OS === 'ios' ? 180 : 100}
 			>
 				<AddFlashcardForm
 					keyboardShouldPersistTaps="handled"
@@ -60,10 +60,12 @@ class AddFlashcard extends Component {
 	}
 }
 
+// `overflow: visible` helps to keep the button in view while `KeyboardAvoidingiew` pushes the inputs out of the way with a generous `keyboardVerticalOffset`. For some reason, this only works on iOS.
 const AddFlashcardForm = styled(ScrollView)`
 	flex: 1;
 	padding: 32px 16px;
 	background-color: ${COLORS.inverse};
+	overflow: visible;
 `
 
 export default AddFlashcard
