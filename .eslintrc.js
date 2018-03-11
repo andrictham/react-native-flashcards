@@ -29,5 +29,6 @@ module.exports = {
 		'react-native/no-inline-styles': 'off',
 		'react/prop-types': 'off',
 		'react/display-name': 'off',
+		'no-case-declarations': 'off',
 	},
 }
