@@ -59,6 +59,7 @@ import DeckInfo from '../components/DeckInfo'
 // ]
 
 class DeckList extends Component {
+	keyExtractor = item => item.id
 	render() {
 		const { navigate } = this.props.navigation
 
@@ -66,9 +67,8 @@ class DeckList extends Component {
 			<CardList>
 				<FlatList
 					data={this.props.decks}
-					renderItem={({ item }) => (
-						<DeckItem key={item.key} {...item} navigate={navigate} />
-					)}
+					renderItem={({ item }) => <DeckItem {...item} navigate={navigate} />}
+					keyExtractor={this.keyExtractor}
 					contentContainerStyle={{
 						paddingTop: 16,
 						paddingBottom: Platform.OS === 'android' ? 88 : 16,
@@ -132,11 +132,11 @@ const CardList = styled(View)`
 	background-color: ${COLORS.background};
 `
 
-const mapStateToProps = decks => {
-	const decksArray = Object.keys(decks).map(key => {
+const mapStateToProps = ({ decks }) => {
+	const decksArray = Object.keys(decks).map(id => {
 		return {
-			...decks[key],
-			cardCount: decks[key].cards.length,
+			...decks[id],
+			cardCount: decks[id].cards.length,
 		}
 	})
 	return {

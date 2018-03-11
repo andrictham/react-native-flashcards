@@ -1,7 +1,7 @@
 import React from 'react'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import reducer from './reducers'
+import rootReducer from './reducers'
 import styled from 'styled-components/native'
 import { View } from 'react-native'
 import CustomStatusBar from './components/CustomStatusBar'
@@ -13,7 +13,7 @@ import COLORS from './styles/colors'
 // TODO: Add daily push notification reminder
 
 const store = createStore(
-	reducer,
+	rootReducer,
 	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 )
 

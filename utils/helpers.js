@@ -1,6 +1,6 @@
 export const initialDecks = {
-	'React Native': {
-		key: 'aefwHGw8eub',
+	aefwHGw8eub: {
+		id: 'aefwHGw8eub',
 		title: 'React Native',
 		cards: [
 			{
@@ -18,38 +18,38 @@ export const initialDecks = {
 			},
 		],
 	},
-	Javascript: {
-		key: 'bfjeiofhEIEW',
+	bfjeiofhEIEW: {
+		id: 'bfjeiofhEIEW',
 		title: 'Javascript',
 		cards: [],
 	},
-	Redux: {
-		key: '38s4623ekwfjh',
+	'38s4623ekwfjh': {
+		id: '38s4623ekwfjh',
 		title: 'Redux',
 		cards: [],
 	},
-	'Styled Components': {
-		key: '38dd623ekwfjh',
+	'38dd623ekwfjh': {
+		id: '38dd623ekwfjh',
 		title: 'Styled Components',
 		cards: [],
 	},
-	Flexbox: {
-		key: '38s4ffekwfjh',
+	'38s4ffekwfjh': {
+		id: '38s4ffekwfjh',
 		title: 'Flexbox',
 		cards: [],
 	},
-	Swift: {
-		key: '3awsd623ekwfjh',
+	'3awsd623ekwfjh': {
+		id: '3awsd623ekwfjh',
 		title: 'Swift',
 		cards: [],
 	},
-	'Objective-C': {
-		key: '38ergr3ekwfjh',
+	'38ergr3ekwfjh': {
+		id: '38ergr3ekwfjh',
 		title: 'Objective-C',
 		cards: [],
 	},
-	'Sketch.app': {
-		key: '38s46ssskwfjh',
+	'38s46ssskwfjh': {
+		id: '38s46ssskwfjh',
 		title: 'Sketch.app',
 		cards: [],
 	},
