@@ -1,7 +1,5 @@
 import React from 'react'
-import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import rootReducer from './reducers'
 import styled from 'styled-components/native'
 import { View, Text } from 'react-native'
 import CustomStatusBar from './components/CustomStatusBar'
@@ -10,22 +8,16 @@ import COLORS from './styles/colors'
 import configureStore from './utils/configureStore'
 import { PersistGate } from 'redux-persist/integration/react'
 
-// TODO: Store everything in Redux
-// TODO: Persist Redux store to AsyncStorage
 // TODO: Add daily push notification reminder
 
-const { store, persistor } = configureStore()
-
-// const store = createStore(
-// 	rootReducer,
-// 	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-// )
-
-export default class App extends React.Component {
+class App extends React.Component {
 	render() {
 		return (
-			<Provider store={store}>
-				<PersistGate loading={<Text>Loading...</Text>} persistor={persistor}>
+			<Provider store={configureStore().store}>
+				<PersistGate
+					loading={<Text>Loading...</Text>}
+					persistor={configureStore().persistor}
+				>
 					<AppContainer>
 						<CustomStatusBar
 							backgroundColor={COLORS.accent}
@@ -42,3 +34,4 @@ export default class App extends React.Component {
 const AppContainer = styled(View)`
 	flex: 1;
 `
+export default App
