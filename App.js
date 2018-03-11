@@ -1,7 +1,8 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import styled from 'styled-components/native'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
+import { AppLoading } from 'expo'
 import CustomStatusBar from './components/CustomStatusBar'
 import MainNavigator from './components/Navigation'
 import COLORS from './styles/colors'
@@ -15,7 +16,7 @@ class App extends React.Component {
 		return (
 			<Provider store={configureStore().store}>
 				<PersistGate
-					loading={<Text>Loading...</Text>}
+					loading={<AppLoading />}
 					persistor={configureStore().persistor}
 				>
 					<AppContainer>
