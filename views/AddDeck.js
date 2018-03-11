@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addDeck } from '../actions'
-import { ScrollView } from 'react-native'
+import { ScrollView, Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 import COLORS from '../styles/colors'
 import { TextInputGroup } from '../components/Inputs'
@@ -19,6 +19,10 @@ class AddDeck extends Component {
 	handleAdd = () => {
 		this.props.addDeck(this.state.title)
 		this.props.navigation.navigate('DeckList')
+		this.setState({
+			title: '',
+		})
+		Keyboard.dismiss()
 	}
 	render() {
 		return (
