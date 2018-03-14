@@ -64,6 +64,7 @@ const Tabs = TabNavigator(
 		...TabContents(), // Render platform-specific tabs
 	},
 	{
+		removeClippedSubviews: true,
 		navigationOptions: {
 			header: null,
 		},
@@ -96,36 +97,42 @@ const StackNavigationOptions = {
 	headerStyle: {
 		backgroundColor: COLORS.accent,
 	},
+	headerForceInset: Platform.OS === 'ios' ? true : false,
 }
 
-const MainNavigator = StackNavigator({
-	Tabs: {
-		screen: Tabs,
-	},
-	AddDeck: {
-		screen: AddDeck,
-		navigationOptions: {
-			...StackNavigationOptions,
+const MainNavigator = StackNavigator(
+	{
+		Tabs: {
+			screen: Tabs,
+		},
+		AddDeck: {
+			screen: AddDeck,
+			navigationOptions: {
+				...StackNavigationOptions,
+			},
+		},
+		DeckDetail: {
+			screen: DeckDetail,
+			navigationOptions: {
+				...StackNavigationOptions,
+			},
+		},
+		AddFlashcard: {
+			screen: AddFlashcard,
+			navigationOptions: {
+				...StackNavigationOptions,
+			},
+		},
+		QuizView: {
+			screen: QuizView,
+			navigationOptions: {
+				...StackNavigationOptions,
+			},
 		},
 	},
-	DeckDetail: {
-		screen: DeckDetail,
-		navigationOptions: {
-			...StackNavigationOptions,
-		},
+	{
+		headerMode: 'screen',
 	},
-	AddFlashcard: {
-		screen: AddFlashcard,
-		navigationOptions: {
-			...StackNavigationOptions,
-		},
-	},
-	QuizView: {
-		screen: QuizView,
-		navigationOptions: {
-			...StackNavigationOptions,
-		},
-	},
-})
+)
 
 export default MainNavigator
