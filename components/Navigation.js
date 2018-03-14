@@ -98,34 +98,39 @@ const StackNavigationOptions = {
 	},
 }
 
-const MainNavigator = StackNavigator({
-	Tabs: {
-		screen: Tabs,
-	},
-	AddDeck: {
-		screen: AddDeck,
-		navigationOptions: {
-			...StackNavigationOptions,
+const MainNavigator = StackNavigator(
+	{
+		Tabs: {
+			screen: Tabs,
+		},
+		AddDeck: {
+			screen: AddDeck,
+			navigationOptions: {
+				...StackNavigationOptions,
+			},
+		},
+		DeckDetail: {
+			screen: DeckDetail,
+			navigationOptions: {
+				...StackNavigationOptions,
+			},
+		},
+		AddFlashcard: {
+			screen: AddFlashcard,
+			navigationOptions: {
+				...StackNavigationOptions,
+			},
+		},
+		QuizView: {
+			screen: QuizView,
+			navigationOptions: {
+				...StackNavigationOptions,
+			},
 		},
 	},
-	DeckDetail: {
-		screen: DeckDetail,
-		navigationOptions: {
-			...StackNavigationOptions,
-		},
+	{
+		headerTransitionPreset: 'uikit',
 	},
-	AddFlashcard: {
-		screen: AddFlashcard,
-		navigationOptions: {
-			...StackNavigationOptions,
-		},
-	},
-	QuizView: {
-		screen: QuizView,
-		navigationOptions: {
-			...StackNavigationOptions,
-		},
-	},
-})
+)
 
 export default MainNavigator
