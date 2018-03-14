@@ -11,13 +11,19 @@ class SettingsView extends Component {
 	}
 	render() {
 		return (
-			<View style={{ marginTop: 16 }}>
+			<View
+				style={{ paddingTop: 16, flex: 1, backgroundColor: COLORS.background }}
+			>
 				<Section
 					header="NOTIFICATIONS"
 					footer="Turn this on to receive a friendly reminder at 9am daily."
+					sectionTintColor={COLORS.background}
+					headerTextColor={COLORS.primary}
+					footerTextColor={COLORS.subtle}
 				>
 					<Cell
 						title="Remind me to revise"
+						titleTextColor={COLORS.primary}
 						cellAccessoryView={
 							(Platform.OS === 'android' && (
 								<Switch
