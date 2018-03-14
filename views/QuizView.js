@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
-import { PrimaryButton } from '../components/Buttons'
+import FlipCard from '../components/FlipCard'
+import { PrimaryButton, SecondaryButton } from '../components/Buttons'
+import { Header } from '../components/Typography'
 import COLORS from '../styles/colors'
 import { BORDER_RADIUS } from '../styles/utils'
-import { Header } from '../components/Typography'
-import FlipCard from '../components/FlipCard'
-import { connect } from 'react-redux'
-
-// TODO: Replay button
-// TODO: Back to deck detail
 
 class QuizView extends Component {
 	static navigationOptions = () => {
@@ -36,6 +33,17 @@ class QuizView extends Component {
 		}))
 	}
 
+	handleReplay = () => {
+		this.setState({
+			currentCardCount: 1,
+			quizScore: 0,
+		})
+	}
+
+	handleGoBack = () => {
+		this.props.navigation.goBack()
+	}
+
 	render() {
 		const { currentDeck, totalCardCount } = this.props
 		const { currentCardCount, quizScore } = this.state
@@ -55,7 +63,7 @@ class QuizView extends Component {
 							),
 					)}
 
-					<Buttons>
+					<Buttons stackedRow>
 						<PrimaryButton
 							title="Correct"
 							stackedRow
@@ -85,9 +93,14 @@ class QuizView extends Component {
 						<Header size="XXS">YOUR SCORE</Header>
 						<Header size="XL">{`${percentageCorrect}%`}</Header>
 						<Header size="S">
-							You got {quizScore} out of {totalCardCount} correct.
+							You got {quizScore} out of {totalCardCount} correct
 						</Header>
 					</Scorecard>
+
+					<Buttons>
+						<PrimaryButton title="Replay Quiz" onPress={this.handleReplay} />
+						<SecondaryButton title="Back to Deck" onPress={this.handleGoBack} />
+					</Buttons>
 				</Score>
 			)
 		}
@@ -102,8 +115,9 @@ const Quiz = styled(View)`
 `
 
 const Buttons = styled(View)`
-	flex-direction: row;
+	flex-direction: ${props => (props.stackedRow ? 'row' : 'column')};
 	align-items: center;
+	margin-top: 32px;
 `
 
 const Score = styled(View)`
