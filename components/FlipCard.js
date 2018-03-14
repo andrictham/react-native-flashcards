@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { SecondaryButton } from './Buttons'
 import { Header } from './Typography'
 import COLORS from '../styles/colors'
+import { BORDER_RADIUS } from '../styles/utils'
 
 // Sources:
 // https://github.com/facebook/react-native/issues/1973#issuecomment-262059217
@@ -108,7 +109,7 @@ const FlashCard = styled(Animated.View)`
 	padding: 32px 24px;
 	margin: 16px;
 	background-color: ${COLORS.inverse};
-	border-radius: 4px;
+	border-radius: ${BORDER_RADIUS};
 `
 
 const FlashCardBack = FlashCard.extend`

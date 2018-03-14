@@ -8,7 +8,7 @@ export const TEXT_SIZE = {
 	M: '24px',
 	S: '20px',
 	XS: '16px',
-	XXS: '12px',
+	XXS: '14px',
 }
 
 export const Header = styled(Text)`

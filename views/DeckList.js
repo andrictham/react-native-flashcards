@@ -11,6 +11,7 @@ import FAB from 'react-native-fab'
 import { Ionicons } from '@expo/vector-icons'
 import styled from 'styled-components/native'
 import COLORS from '../styles/colors'
+import { BORDER_RADIUS } from '../styles/utils'
 import DeckInfo from '../components/DeckInfo'
 
 class DeckList extends Component {
@@ -77,7 +78,7 @@ const Card = styled(View)`
 	margin: 8px 16px;
 	padding: 32px;
 	background-color: ${COLORS.inverse};
-	border-radius: 3px;
+	border-radius: ${BORDER_RADIUS};
 	elevation: 2;
 `
 

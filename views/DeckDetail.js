@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { PrimaryButton, SecondaryButton } from '../components/Buttons'
 import DeckInfo from '../components/DeckInfo'
 import COLORS from '../styles/colors'
+import { BORDER_RADIUS } from '../styles/utils'
 
 class DeckDetail extends Component {
 	static navigationOptions = () => {
@@ -50,7 +51,7 @@ const Deck = styled(View)`
 	padding: 48px;
 	margin: 32px;
 	background-color: ${COLORS.inverse};
-	border-radius: 4px;
+	border-radius: ${BORDER_RADIUS};
 `
 
 const Actions = styled(View)`
@@ -64,12 +65,6 @@ const ViewContainer = styled(View)`
 `
 
 const mapStateToProps = ({ decks }) => {
-	// const decksArray = Object.keys(decks).map(id => {
-	// 	return {
-	// 		...decks[id],
-	// 		cardCount: decks[id].cards.length,
-	// 	}
-	// })
 	return {
 		decks,
 	}
