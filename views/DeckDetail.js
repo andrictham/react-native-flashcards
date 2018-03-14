@@ -17,20 +17,20 @@ class DeckDetail extends Component {
 		const { navigate } = this.props.navigation
 		const { decks } = this.props
 		const currentDeck = decks[id]
+		const cardCount = currentDeck.cards.length
 		return (
 			<ViewContainer>
 				<Deck>
-					<DeckInfo
-						title={currentDeck.title}
-						cardCount={currentDeck.cards.length}
-					/>
+					<DeckInfo title={currentDeck.title} cardCount={cardCount} />
 					<Actions>
-						<PrimaryButton
-							title="Start Quiz"
-							onPress={() => {
-								navigate('QuizView', { id })
-							}}
-						/>
+						{cardCount >= 1 && (
+							<PrimaryButton
+								title="Start Quiz"
+								onPress={() => {
+									navigate('QuizView', { id })
+								}}
+							/>
+						)}
 						<SecondaryButton
 							title="Add Flashcard"
 							onPress={() => {
