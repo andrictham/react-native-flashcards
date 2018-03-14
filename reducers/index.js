@@ -16,6 +16,21 @@ const decks = (state = initialDecks, action) => {
 			},
 			...state,
 		}
+	case ADD_FLASHCARD:
+		const { id, question, answer } = action
+		return {
+			...state,
+			[id]: {
+				...state[id],
+				cards: [
+					...state[id].cards,
+					{
+						question,
+						answer,
+					},
+				],
+			},
+		}
 	default:
 		return state
 	}

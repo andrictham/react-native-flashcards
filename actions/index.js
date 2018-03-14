@@ -7,3 +7,12 @@ export const addDeck = title => {
 		title,
 	}
 }
+
+export const addFlashcard = ({ id, question, answer }) => {
+	return {
+		type: ADD_FLASHCARD,
+		id,
+		question,
+		answer,
+	}
+}

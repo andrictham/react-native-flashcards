@@ -15,6 +15,7 @@ import DeckInfo from '../components/DeckInfo'
 
 class DeckList extends Component {
 	keyExtractor = item => item.id
+
 	render() {
 		const { navigate } = this.props.navigation
 
@@ -49,25 +50,22 @@ class DeckList extends Component {
 	}
 }
 
-const DeckItem = ({ title, cardCount, navigate }) => {
+const DeckItem = ({ id, title, cardCount, navigate }) => {
 	const renderCard = (
 		<Card>
 			<DeckInfo title={title} cardCount={cardCount} />
 		</Card>
 	)
+	const goToCardDetail = () => {
+		navigate('DeckDetail', { id })
+	}
 	if (Platform.OS === 'ios') {
 		return (
-			<TouchableOpacity
-				onPress={() => navigate('DeckDetail', { title, cardCount })}
-			>
-				{renderCard}
-			</TouchableOpacity>
+			<TouchableOpacity onPress={goToCardDetail}>{renderCard}</TouchableOpacity>
 		)
 	} else if (Platform.OS === 'android') {
 		return (
-			<TouchableNativeFeedback
-				onPress={() => navigate('DeckDetail', { title, cardCount })}
-			>
+			<TouchableNativeFeedback onPress={goToCardDetail}>
 				{renderCard}
 			</TouchableNativeFeedback>
 		)

@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
-import { ScrollView, Platform, KeyboardAvoidingView } from 'react-native'
+import { connect } from 'react-redux'
+import { addFlashcard } from '../actions'
+import {
+	ScrollView,
+	Platform,
+	KeyboardAvoidingView,
+	Keyboard,
+} from 'react-native'
 import styled from 'styled-components/native'
 import COLORS from '../styles/colors'
 import { TextInputGroup } from '../components/Inputs'
 import { PrimaryButton } from '../components/Buttons'
-
-// TODO: Link up button
-// TODO: Connect to Redux
 
 class AddFlashcard extends Component {
 	static navigationOptions = () => {
@@ -18,6 +22,24 @@ class AddFlashcard extends Component {
 		question: '',
 		answer: '',
 	}
+
+	handleAdd = () => {
+		const { addFlashcard, navigation } = this.props
+		const { question, answer } = this.state
+		const { id } = navigation.state.params
+		addFlashcard({
+			id,
+			question,
+			answer,
+		})
+		this.setState({
+			question: '',
+			answer: '',
+		})
+		Keyboard.dismiss()
+		navigation.goBack()
+	}
+
 	render() {
 		return (
 			<KeyboardAvoidingView
@@ -46,13 +68,13 @@ class AddFlashcard extends Component {
 					/>
 					<PrimaryButton
 						title="Add Card"
-						onPress={() =>
-							alert(`Question: ${this.state.question}\nAnswer: ${
-								this.state.answer
-							}
-						`)
-						}
+						onPress={this.handleAdd}
 						color={COLORS.accent}
+						disabled={
+							this.state.question === '' || this.state.answer === ''
+								? true
+								: false
+						}
 					/>
 				</AddFlashcardForm>
 			</KeyboardAvoidingView>
@@ -68,4 +90,4 @@ const AddFlashcardForm = styled(ScrollView)`
 	overflow: visible;
 `
 
-export default AddFlashcard
+export default connect(null, { addFlashcard })(AddFlashcard)
