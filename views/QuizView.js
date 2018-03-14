@@ -3,14 +3,13 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 import { PrimaryButton } from '../components/Buttons'
 import COLORS from '../styles/colors'
+import { BORDER_RADIUS } from '../styles/utils'
+import { Header } from '../components/Typography'
 import FlipCard from '../components/FlipCard'
+import { connect } from 'react-redux'
 
-// TODO: display a card question
-// TODO: option to view answer (flips the card)
-// TODO: a “Correct” button
-// TODO: an “Incorrect” button
-// TODO: number of cards left on the quiz
-// TODO: display percentage correct once the quiz is complete
+// TODO: Replay button
+// TODO: Back to deck detail
 
 class QuizView extends Component {
 	static navigationOptions = () => {
@@ -18,21 +17,80 @@ class QuizView extends Component {
 			title: 'Quiz',
 		}
 	}
+
+	state = {
+		currentCardCount: 1,
+		quizScore: 0,
+	}
+
+	handleCorrect = () => {
+		this.setState(prevState => ({
+			currentCardCount: prevState.currentCardCount + 1,
+			quizScore: prevState.quizScore + 1,
+		}))
+	}
+
+	handleIncorrect = () => {
+		this.setState(prevState => ({
+			currentCardCount: prevState.currentCardCount + 1,
+		}))
+	}
+
 	render() {
-		return (
-			<Quiz>
-				<FlipCard
-					question="Does React Native work with Android?"
-					answer="Yes, totally! React Native is a cross-platform mobile development framework that works for both iOS, and Android."
-					currentCount="1"
-					totalCount="9"
-				/>
-				<Buttons>
-					<PrimaryButton title="Correct" stackedRow intent="correct" />
-					<PrimaryButton title="Incorrect" stackedRow intent="wrong" />
-				</Buttons>
-			</Quiz>
-		)
+		const { currentDeck, totalCardCount } = this.props
+		const { currentCardCount, quizScore } = this.state
+		if (currentCardCount <= totalCardCount) {
+			return (
+				<Quiz>
+					{currentDeck.cards.map(
+						(card, index) =>
+							currentCardCount === index + 1 && (
+								<FlipCard
+									key={card.question}
+									question={card.question}
+									answer={card.answer}
+									currentCount={currentCardCount}
+									totalCount={totalCardCount}
+								/>
+							),
+					)}
+
+					<Buttons>
+						<PrimaryButton
+							title="Correct"
+							stackedRow
+							intent="correct"
+							onPress={this.handleCorrect}
+						/>
+						<PrimaryButton
+							title="Incorrect"
+							stackedRow
+							intent="wrong"
+							onPress={this.handleIncorrect}
+						/>
+					</Buttons>
+				</Quiz>
+			)
+		} else if (currentCardCount > totalCardCount) {
+			const percentageCorrect = (quizScore / totalCardCount * 100).toFixed(0)
+			return (
+				<Score>
+					{quizScore < totalCardCount && (
+						<Header size="L">Do better next time! 🚀</Header>
+					)}
+					{quizScore === totalCardCount && (
+						<Header size="L">Great job! 🎉</Header>
+					)}
+					<Scorecard>
+						<Header size="XXS">YOUR SCORE</Header>
+						<Header size="XL">{`${percentageCorrect}%`}</Header>
+						<Header size="S">
+							You got {quizScore} out of {totalCardCount} correct.
+						</Header>
+					</Scorecard>
+				</Score>
+			)
+		}
 	}
 }
 
@@ -48,4 +106,29 @@ const Buttons = styled(View)`
 	align-items: center;
 `
 
-export default QuizView
+const Score = styled(View)`
+	flex: 1;
+	padding: 32px 16px 32px;
+	background-color: ${COLORS.background};
+	align-items: center;
+	justify-content: flex-start;
+`
+
+const Scorecard = styled(View)`
+	padding: 16px;
+	margin-top: 32px;
+	background-color: ${COLORS.inverse};
+	border-radius: ${BORDER_RADIUS};
+`
+
+const mapStateToProps = ({ decks }, ownProps) => {
+	const currentDeckID = ownProps.navigation.state.params.id
+	const currentDeck = decks[currentDeckID]
+	const currentDeckCardCount = currentDeck.cards.length
+	return {
+		currentDeck,
+		totalCardCount: currentDeckCardCount,
+	}
+}
+
+export default connect(mapStateToProps)(QuizView)
