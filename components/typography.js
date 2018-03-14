@@ -5,8 +5,8 @@ import COLORS from '../styles/colors'
 export const TEXT_SIZE = {
 	XL: '36px',
 	L: '32px',
-	M: '28px',
-	S: '24px',
+	M: '24px',
+	S: '20px',
 	XS: '16px',
 	XXS: '12px',
 }
@@ -28,5 +28,5 @@ export const Header = styled(Text)`
 		(props.size === 'XS' && 400) ||
 		(props.size === 'XXS' && 600)};
 	text-align: ${props => (props.center ? 'center' : 'left')};
-	margin: 1% 0%;
+	margin: 1% 0px;
 `

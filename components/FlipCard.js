@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Animated, Dimensions } from 'react-native'
+import { View, Animated, Dimensions } from 'react-native'
 import styled from 'styled-components/native'
 import { SecondaryButton } from './Buttons'
 import { Header } from './Typography'
+import COLORS from '../styles/colors'
 
 // Sources:
 // https://github.com/facebook/react-native/issues/1973#issuecomment-262059217
@@ -39,14 +40,14 @@ export default class FlipCard extends Component {
 		if (this.value >= 90) {
 			Animated.spring(this.animatedValue, {
 				toValue: 0,
-				friction: 10,
+				friction: 12,
 				tension: 100,
 			}).start()
 			this.setState({ side: 'front' })
 		} else {
 			Animated.spring(this.animatedValue, {
 				toValue: 180,
-				friction: 10,
+				friction: 12,
 				tension: 100,
 			}).start()
 			this.setState({ side: 'back' })
@@ -98,22 +99,22 @@ const Container = styled(View)`
 	flex: 1;
 	align-items: center;
 	justify-content: flex-start;
-	background-color: white;
 `
 
 const FlashCard = styled(Animated.View)`
 	align-items: center;
 	justify-content: center;
 	backface-visibility: hidden;
-	width: ${width};
-	padding: 16px;
+	padding: 32px 24px;
+	margin: 16px;
+	background-color: ${COLORS.inverse};
+	border-radius: 4px;
 `
 
 const FlashCardBack = FlashCard.extend`
 	position: absolute;
 	top: 0;
 	left: 0;
-	${'' /* padding-right: 16; */};
 `
 
 const TopRow = styled(View)`
@@ -121,5 +122,5 @@ const TopRow = styled(View)`
 	align-items: center;
 	justify-content: space-between;
 	width: ${width};
-	padding: 16px;
+	padding: 8px 32px;
 `

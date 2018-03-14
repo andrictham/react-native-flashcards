@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 import { PrimaryButton } from '../components/Buttons'
-import { Header } from '../components/Typography'
 import COLORS from '../styles/colors'
 import FlipCard from '../components/FlipCard'
 
@@ -40,7 +39,7 @@ class QuizView extends Component {
 const Quiz = styled(View)`
 	flex: 1;
 	padding: 16px 16px 32px;
-	background-color: ${COLORS.inverse};
+	background-color: ${COLORS.background};
 	align-items: center;
 `
 
