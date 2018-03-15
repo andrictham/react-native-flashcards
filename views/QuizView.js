@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { View } from 'react-native'
+import { View, LayoutAnimation } from 'react-native'
 import styled from 'styled-components/native'
 import FlipCard from '../components/FlipCard'
 import { PrimaryButton, SecondaryButton } from '../components/Buttons'
@@ -25,12 +25,14 @@ class QuizView extends Component {
 			currentCardCount: prevState.currentCardCount + 1,
 			quizScore: prevState.quizScore + 1,
 		}))
+		LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
 	}
 
 	handleIncorrect = () => {
 		this.setState(prevState => ({
 			currentCardCount: prevState.currentCardCount + 1,
 		}))
+		LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
 	}
 
 	handleReplay = () => {
@@ -84,10 +86,14 @@ class QuizView extends Component {
 			return (
 				<Score>
 					{quizScore < totalCardCount && (
-						<Header size="L">Do better next time! 🚀</Header>
+						<Header size="L" center>
+							🚀 Do better next time!
+						</Header>
 					)}
 					{quizScore === totalCardCount && (
-						<Header size="L">Great job! 🎉</Header>
+						<Header size="L" center>
+							🎉 Great job!
+						</Header>
 					)}
 					<Scorecard>
 						<Header size="XXS">YOUR SCORE</Header>
