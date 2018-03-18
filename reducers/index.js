@@ -8,7 +8,6 @@ const decks = (state = initialDecks, action) => {
 		const { deckID, title } = action
 		return {
 			[deckID]: {
-				id: deckID,
 				title,
 				cards: [],
 			},
