@@ -84,12 +84,14 @@ const Card = styled(View)`
 
 const CardList = styled(View)`
 	background-color: ${COLORS.background};
+	flex: 1;
 `
 
 const mapStateToProps = ({ decks }) => {
 	const decksArray = Object.keys(decks).map(id => {
 		return {
 			...decks[id],
+			id,
 			cardCount: decks[id].cards.length,
 		}
 	})
