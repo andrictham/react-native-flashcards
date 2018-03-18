@@ -1,16 +1,14 @@
 import { ADD_DECK, ADD_FLASHCARD } from '../actions'
 import { combineReducers } from 'redux'
 import { initialDecks } from '../utils/helpers'
-import uuidv4 from 'uuid/v4'
 
 const decks = (state = initialDecks, action) => {
 	switch (action.type) {
 	case ADD_DECK:
-		const { title } = action
-		const uniqueID = uuidv4()
+		const { deckID, title } = action
 		return {
-			[uniqueID]: {
-				id: uniqueID,
+			[deckID]: {
+				id: deckID,
 				title,
 				cards: [],
 			},

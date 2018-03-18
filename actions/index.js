@@ -1,9 +1,10 @@
 export const ADD_DECK = 'ADD_DECK'
 export const ADD_FLASHCARD = 'ADD_FLASHCARD'
 
-export const addDeck = title => {
+export const addDeck = ({ id, title }) => {
 	return {
 		type: ADD_DECK,
+		deckID: id,
 		title,
 	}
 }

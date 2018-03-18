@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import COLORS from '../styles/colors'
 import { TextInputGroup } from '../components/Inputs'
 import { PrimaryButton } from '../components/Buttons'
+import uuidv4 from 'uuid/v4'
 
 class AddDeck extends Component {
 	static navigationOptions = () => {
@@ -17,8 +18,13 @@ class AddDeck extends Component {
 		title: '',
 	}
 	handleAdd = () => {
-		this.props.addDeck(this.state.title)
-		this.props.navigation.navigate('DeckList')
+		const id = uuidv4()
+		const { title } = this.state
+		this.props.addDeck({
+			id,
+			title,
+		})
+		this.props.navigation.navigate('DeckDetail', { id })
 		this.setState({
 			title: '',
 		})
