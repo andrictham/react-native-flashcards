@@ -73,7 +73,7 @@ export default class FlipCard extends Component {
 					<SecondaryButton
 						title={
 							(this.state.side === 'front' && 'Show Answer') ||
-							(this.state.side === 'back' && 'Show Question')
+							(this.state.side === 'back' && 'Hide Answer')
 						}
 						onPress={() => this.flipCard()}
 					/>
