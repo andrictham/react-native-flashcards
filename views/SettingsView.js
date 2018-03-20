@@ -3,12 +3,15 @@ import { connect } from 'react-redux'
 import { Switch, Platform, View, Alert, Linking, AppState } from 'react-native'
 import { Section, Cell } from 'react-native-tableview-simple'
 import COLORS from '../styles/colors'
-import { Permissions, Notifications } from 'expo'
+import { Permissions } from 'expo'
 import {
 	askNotificationPermissions,
 	setNotificationPreference,
 } from '../actions'
-import moment from 'moment'
+import {
+	scheduleNotifications,
+	cancelScheduledNotifications,
+} from '../utils/scheduleNotifications'
 
 class SettingsView extends Component {
 	state = {
@@ -55,37 +58,6 @@ class SettingsView extends Component {
 		this._onLoad()
 	}
 
-	_scheduleNotifications() {
-		const localNotification = {
-			title: 'Time to revise!',
-			body: '🕛 🧠 ⚡️',
-			data: { type: 'delayed' },
-		}
-
-		const tomorrow = moment()
-			.add(1, 'days')
-			.hours(12)
-			.startOf('hour')
-			.valueOf()
-
-		const schedulingOptions = {
-			time: tomorrow, // Schedule a notification that starts tomorrow
-			repeat: 'day', // Repeat daily
-		}
-
-		console.log('Scheduling delayed notification:', {
-			localNotification,
-			schedulingOptions,
-		})
-
-		Notifications.scheduleLocalNotificationAsync(
-			localNotification,
-			schedulingOptions,
-		)
-			.then(() => console.info('Delayed notification scheduled'))
-			.catch(err => console.error(err))
-	}
-
 	switchToggle = value => {
 		const { setNotificationPreference } = this.props
 		if (value === true) {
@@ -93,7 +65,7 @@ class SettingsView extends Component {
 			this._checkNotificationPermissions().then(response => {
 				if (response === 'granted') {
 					// First case: User has already granted permission, and is asking to enable notifications
-					this._scheduleNotifications()
+					scheduleNotifications()
 					setNotificationPreference(true)
 				} else if (response === 'denied') {
 					// Second case: User has not granted permission, and is asking to enable notifications
@@ -123,9 +95,7 @@ class SettingsView extends Component {
 
 			console.log('Cancelling scheduled notifications')
 
-			Notifications.cancelAllScheduledNotificationsAsync() // Cancel all scheduled notifications
-				.then(() => console.info('Cancelled scheduled notifications'))
-				.catch(err => console.error(err))
+			cancelScheduledNotifications()
 		}
 	}
 	render() {
@@ -135,7 +105,7 @@ class SettingsView extends Component {
 			>
 				<Section
 					header="NOTIFICATIONS"
-					footer="Turn this on to receive a friendly reminder at 12pm daily."
+					footer="Turn this on to receive a friendly reminder at 6pm daily. We won’t send you any notifications if you’ve already revised for that day."
 					sectionTintColor={COLORS.background}
 					headerTextColor={COLORS.primary}
 					footerTextColor={COLORS.subtle}

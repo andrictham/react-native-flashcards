@@ -7,6 +7,10 @@ import { PrimaryButton, SecondaryButton } from '../components/Buttons'
 import { Header } from '../components/Typography'
 import COLORS from '../styles/colors'
 import { BORDER_RADIUS } from '../styles/utils'
+import {
+	scheduleNotifications,
+	cancelScheduledNotifications,
+} from '../utils/scheduleNotifications'
 
 class QuizView extends Component {
 	static navigationOptions = () => {
@@ -44,6 +48,20 @@ class QuizView extends Component {
 
 	handleGoBack = () => {
 		this.props.navigation.goBack()
+	}
+
+	componentDidUpdate = () => {
+		const { totalCardCount, notifications } = this.props
+		const { currentCardCount } = this.state
+		if (currentCardCount > totalCardCount) {
+			console.log('Quiz is completed!')
+			// When quiz is done, given notifications are enabled by the user, defer notifications until the next day
+			// If not, don’t do anything
+			if (notifications.areNotificationsEnabled) {
+				cancelScheduledNotifications() // Cancel scheduled notification for the day
+				scheduleNotifications() // Reinstante notifications, starting from the next day
+			}
+		}
 	}
 
 	render() {
@@ -141,13 +159,14 @@ const Scorecard = styled(View)`
 	border-radius: ${BORDER_RADIUS};
 `
 
-const mapStateToProps = ({ decks }, ownProps) => {
+const mapStateToProps = ({ decks, notifications }, ownProps) => {
 	const currentDeckID = ownProps.navigation.state.params.id
 	const currentDeck = decks[currentDeckID]
 	const currentDeckCardCount = currentDeck.cards.length
 	return {
 		currentDeck,
 		totalCardCount: currentDeckCardCount,
+		notifications,
 	}
 }
 
