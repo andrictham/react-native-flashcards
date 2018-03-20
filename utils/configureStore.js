@@ -9,7 +9,7 @@ const persistConfig = {
 	key: 'root',
 	storage: AsyncStorage,
 	stateReconciler: autoMergeLevel2,
-	whitelist: ['decks'],
+	whitelist: ['decks', 'notifications'],
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

@@ -30,5 +30,6 @@ module.exports = {
 		'react/prop-types': 'off',
 		'react/display-name': 'off',
 		'no-case-declarations': 'off',
+		'no-console': 'off',
 	},
 }

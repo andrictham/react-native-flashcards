@@ -8,9 +8,6 @@ import MainNavigator from './components/Navigation'
 import COLORS from './styles/colors'
 import configureStore from './utils/configureStore'
 import { PersistGate } from 'redux-persist/integration/react'
-
-// TODO: Add daily push notification reminder
-
 class App extends React.Component {
 	render() {
 		return (
