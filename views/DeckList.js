@@ -33,12 +33,8 @@ class DeckList extends Component {
 				/>
 				{Platform.OS === 'android' && (
 					<FAB
-						buttonColor={
-							Platform.OS === 'android' ? COLORS.accent : COLORS.inverse
-						}
-						iconTextColor={
-							Platform.OS === 'android' ? COLORS.inverse : COLORS.accent
-						}
+						buttonColor={COLORS.accent}
+						iconTextColor={COLORS.inverse}
 						onClickAction={() => {
 							navigate('AddDeck')
 						}}
