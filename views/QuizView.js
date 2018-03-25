@@ -59,7 +59,7 @@ class QuizView extends Component {
 			// If not, don’t do anything
 			if (notifications.areNotificationsEnabled) {
 				cancelScheduledNotifications() // Cancel scheduled notification for the day
-				scheduleNotifications() // Reinstante notifications, starting from the next day
+				scheduleNotifications() // Reinstantiate notifications, starting from the next day
 			}
 		}
 	}
